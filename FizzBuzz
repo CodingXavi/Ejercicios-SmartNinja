@@ -1,0 +1,23 @@
+print ("Bienvenido al juego de FizzBuzz")
+
+while True:
+
+    option = input("Selecciona un numero entre 1 y 100: ")
+    option = int(option)
+
+    for num in range (1, option+1):
+
+      if num % 3 == 0 and num % 5 == 0:
+
+        print ("FizzBuzz")
+
+      elif num % 3 == 0:
+
+        print ("Buzz")
+
+      elif num % 5  == 0:
+
+        print ("Buzz")
+
+      else:
+        print (num)
