@@ -1,0 +1,3 @@
+cadena = "SmaRT NinJA Es lO MEjoR"
+minuscula = cadena.lower()
+print ("En minuscula es: " + minuscula)
