@@ -1,0 +1,38 @@
+import random
+import json
+import datetime
+
+secret = random.randint(1,10)
+intentos = 0
+fechaAhora = str(datetime.datetime.now()) #DATETIME.DATETIME otro tipo de libreria
+Username = input ("Enter your name ")
+
+with open ("listfile.txt", "r") as ArchivoDeIntentos:
+    listA = json.loads(ArchivoDeIntentos.read()) #LOAD para leer dentro de un archivo
+    print ("La lista dentro del archivo es " + str(listA))#te aparecera en la pantalla
+
+while True:
+
+    guess = int(input("Enter your guess"))
+    intentos = intentos + 1
+    intentosFallidos = intentos
+
+    if guess == secret:
+        dictA = {"attemps": intentos, "fecha": fechaAhora, "Nombre": Username, "wrongAttemps": intentosFallidos}
+        listA.append(dictA)#APPEND para ir añadiendo contenido en el archivo
+        print("correct")
+        print("numero de intentos son ---> " + str(intentos))
+        with open ("listfile.txt", "w") as Archivos2:
+             Archivos2.write(json.dumps(listA)) #DUMP para escribir dentro de un archivo
+        break
+    elif guess < secret:
+          print ("Your guess is " + str(guess) + " less than secret")
+    elif guess > secret:
+          print ("Your guess is "  + str(guess) + " more than secret")
+    else:
+          print ("Lo siento, no entiendo") + str(guess)
+
+for cadaDict in listA:
+    print ("attemps son "  + str(cadaDict["attemps"]))
+    print ("fecha es " + str(cadaDict["fecha"]))
+    print ("wrongAttemps es " + str(cadaDict["wrongAttemps"])) #attemp es la clave unica escrita en mi lista en mi caso attemps pero podria ser otra cosa
